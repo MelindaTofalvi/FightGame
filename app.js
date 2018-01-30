@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 new Vue({
     el: '#app',
     data:{
@@ -14,11 +15,11 @@ new Vue({
         this.turns = [];
       },
       attack: function(){
-        var damage = this.calculateDamage(3, 10);
+        let damage = this.calculateDamage(3, 10);
         this.monsterHealth -= damage;
         this.turns.unshift({
           isPlayer: true,
-          text: "You hit Monster for " + damage
+          text: `You hit Monster for ${damage}`
         });
 
         if(this.checkWin()){
@@ -29,11 +30,11 @@ new Vue({
 
       },
       specialAttack: function(){
-        var damage = this.calculateDamage(8, 20);
+        let damage = this.calculateDamage(8, 20);
         this.monsterHealth -= damage;
         this.turns.unshift({
           isPlayer: true,
-          text: "You hit Monster HARD for " + damage
+          text: `You hit Monster HARD for ${damage}`
         });
 
         if(this.checkWin()){
@@ -58,12 +59,12 @@ new Vue({
           this.gameIsRunning = false;
       },
       monsterAttacks: function(){
-        var damage = this.calculateDamage(5, 12);
+        let damage = this.calculateDamage(5, 12);
         this.playerHealth -= damage;
         this.checkWin();
         this.turns.unshift({
           isPlayer: false,
-          text: "Monster hits you for " + damage
+          text: `Monster hits you for ${damage}`
         });
 
       },
